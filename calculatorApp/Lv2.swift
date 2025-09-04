@@ -9,12 +9,7 @@ import UIKit
 import SnapKit
 
 class Lv2: Lv1 {
-    
-    let button1 = UIButton()
-    let button2 = UIButton()
-    let button3 = UIButton()
-    let button4 = UIButton()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI2()
@@ -31,20 +26,20 @@ class Lv2: Lv1 {
         
         view.addSubview(horizontalStackView)
         
-        func makeHorizontalStackView(_ views: [UIView]) -> UIStackView {
-            let stackView = UIStackView(arrangedSubviews: views)
-            stackView.backgroundColor = .black
-            stackView.spacing = 10
-            stackView.distribution = .fillEqually
-            return stackView
-        }
-        
         horizontalStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.height.equalTo(80)
             $0.top.equalTo(label.snp.bottom).offset(80)
             
         }
+    }
+    
+    func makeHorizontalStackView(_ views: [UIView]) -> UIStackView {
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.backgroundColor = .black
+        stackView.spacing = 10
+        stackView.distribution = .fillEqually
+        return stackView
     }
 }
 
