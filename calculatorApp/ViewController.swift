@@ -60,7 +60,15 @@ class ViewController: UIViewController {
         let horizontal2 = makeHorizontalStackView([button5, button6, button7, button8])
         let horizontal3 = makeHorizontalStackView([button9, button10, button11, button12])
         let horizontal4 = makeHorizontalStackView([button13, button14, button15, button16])
-        view.addSubview(horizontal1)
+        
+        // 가로 스택뷰
+        func makeHorizontalStackView(_ views: [UIView]) -> UIStackView {
+            let stackView = UIStackView(arrangedSubviews: views)
+            stackView.backgroundColor = .black
+            stackView.spacing = 10
+            stackView.distribution = .fillEqually
+            return stackView
+        }
         
         // 세로 스택뷰
         let verticalStackView = makeVerticalStackView([horizontal1, horizontal2, horizontal3, horizontal4])
@@ -69,8 +77,18 @@ class ViewController: UIViewController {
         
         verticalStackView.snp.makeConstraints {
             $0.width.equalTo(350)
-            $0.top.equalTo(label.snp.bottom).offset(60)
+            $0.top.equalTo(label.snp.bottom).offset(80)
             $0.centerX.equalToSuperview()
+        }
+        
+        // 세로 스택뷰
+        func makeVerticalStackView(_ views: [UIView]) -> UIStackView {
+            let stackView = UIStackView(arrangedSubviews: views)
+            stackView.axis = .vertical
+            stackView.backgroundColor = .black
+            stackView.spacing = 10
+            stackView.distribution = .fillEqually
+            return stackView
         }
     }
     
@@ -92,24 +110,6 @@ class ViewController: UIViewController {
         return button
     }
     
-    // 가로 스택뷰
-    func makeHorizontalStackView(_ views: [UIView]) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: views)
-        stackView.backgroundColor = .black
-        stackView.spacing = 10
-        stackView.distribution = .fillEqually
-        return stackView
-    }
-    
-    // 세로 스택뷰
-    func makeVerticalStackView(_ views: [UIView]) -> UIStackView {
-        let stackView = UIStackView(arrangedSubviews: views)
-        stackView.axis = .vertical
-        stackView.backgroundColor = .black
-        stackView.spacing = 10
-        stackView.distribution = .fillEqually
-        return stackView
-    }
     
     
 }
