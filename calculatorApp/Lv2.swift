@@ -39,15 +39,15 @@ class Lv2: Lv1 {
         button3.setTitle("9", for: .normal)
         button4.setTitle("+", for: .normal)
         
-        let stackView = UIStackView(arrangedSubviews: [button1, button2, button3, button4])
-        stackView.axis = .horizontal
-        stackView.backgroundColor = .black
-        stackView.spacing = 10
-        stackView.distribution = .fillEqually
+        let horizontalStackView = UIStackView(arrangedSubviews: [button1, button2, button3, button4])
+        horizontalStackView.axis = .horizontal
+        horizontalStackView.backgroundColor = .black
+        horizontalStackView.spacing = 10
+        horizontalStackView.distribution = .fillEqually
         
-        view.addSubview(stackView)
+        view.addSubview(horizontalStackView)
         
-        stackView.snp.makeConstraints {
+        horizontalStackView.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.height.equalTo(80)
             $0.top.equalTo(label.snp.bottom).offset(80)
