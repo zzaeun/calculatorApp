@@ -22,24 +22,13 @@ class Lv2: Lv1 {
     
     func configureUI2() {
         
-        // button style이 모두 같으니까 forEach를 통해 style 공통 적용
-        [button1, button2, button3, button4] .forEach {
-            $0.titleLabel?.font = .boldSystemFont(ofSize: 30)
-            $0.setTitleColor(.white, for: .normal)
-            $0.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
-            $0.layer.cornerRadius = 40
-            $0.snp.makeConstraints {
-                $0.height.equalTo(80)
-                $0.width.equalTo(80)
-            }
-        }
-        
-        button1.setTitle("7", for: .normal)
-        button2.setTitle("8", for: .normal)
-        button3.setTitle("9", for: .normal)
-        button4.setTitle("+", for: .normal)
+        let button1 = calculatorButton(title: "7")
+        let button2 = calculatorButton(title: "8")
+        let button3 = calculatorButton(title: "9")
+        let button4 = calculatorButton(title: "+")
         
         let horizontalStackView = makeHorizontalStackView([button1, button2, button3, button4])
+        
         view.addSubview(horizontalStackView)
         
         func makeHorizontalStackView(_ views: [UIView]) -> UIStackView {
@@ -57,4 +46,21 @@ class Lv2: Lv1 {
             
         }
     }
+}
+
+func calculatorButton(title: String) -> UIButton {
+    let button = UIButton()
+    
+    button.setTitle(title, for: .normal)
+    button.titleLabel?.font = .boldSystemFont(ofSize: 30)
+    button.setTitleColor(.white, for: .normal)
+    button.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
+    button.layer.cornerRadius = 40
+        
+        
+    button.snp.makeConstraints {
+            $0.height.equalTo(80)
+            $0.width.equalTo(80)
+        }
+    return button
 }
