@@ -118,7 +118,10 @@ class ViewController: UIViewController {
         guard let value = sender.currentTitle else { return }
         if label.text == "0" {
             label.text = value
-        } else {
+        } else if value == "AC" {
+            label.text = "0"
+        }
+        else {
             label.text = (label.text ?? "") + value
         }
     }
