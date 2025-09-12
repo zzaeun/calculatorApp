@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         label.textColor = .white
         label.textAlignment = .right
         label.font = UIFont.boldSystemFont(ofSize: 60)
-        
+        label.adjustsFontSizeToFitWidth = true
         view.addSubview(label)
         
         label.snp.makeConstraints {
