@@ -12,7 +12,7 @@ import SnapKit
 class ViewController: UIViewController {
     
     var label = UILabel()
-//    let calButtonFactory = CalculatorButton()
+    //    let calButtonFactory = CalculatorButton()
     
     
     override func viewDidLoad() {
@@ -82,11 +82,19 @@ class ViewController: UIViewController {
         guard let value = sender.currentTitle else { return }
         if label.text == "0" {
             label.text = value
-        } else if value == "AC" {
-            label.text = "0"
         } else {
             label.text = (label.text ?? "") + value
         }
+        
+        if value == "AC" {
+            label.text = "0"
+        } else if value == "=" {
+            if var expression = label.text {
+                expression = expression.replacingOccurrences(of: "=", with: "")
+                if let result = Calculator.calculate(expression: expression) {
+                    label.text = "\(result)"
+                }
+            }
+        }
     }
-    
 }
