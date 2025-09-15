@@ -51,7 +51,7 @@ class ViewController: UIViewController {
         
         for row in buttonTitles {
             let buttonRow = row.map { title -> UIButton in
-                let isOperator = ["+", "-", "*", "/", "="].contains(title)
+                let isOperator = ["+", "-", "*", "/", "=", "AC"].contains(title)
                 let bgColor = isOperator ? .orange : UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
                 return CalculatorButton.calculatorButton(title: title, target: self, action: #selector(buttonTapped), backgroundColor: bgColor)
             }
